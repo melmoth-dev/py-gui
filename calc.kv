@@ -1,0 +1,69 @@
+<Container>:
+    orientation: 'vertical'
+    padding: 25
+
+    Label:
+        id: calc_text
+        text: root.calc_text
+        font_size: 48
+        halign: 'right'
+        valign: 'top'
+        size_hint: (1, .25)
+        text_size: self.size
+        halign: 'right'
+        valign: 'bottom'
+
+    GridLayout:
+        cols: 4
+        rows: 4
+        spacing: 3
+        size_hint: (1, .6)
+
+        Button:
+            id: button_7
+            text: '7'
+        Button:
+            id: button_8
+            text: '8'
+        Button:
+            id: button_9
+            text: '9'
+        Button:
+            id: button_plus
+            text: '+'
+        Button:
+            id: button_4
+            text: '4'
+        Button:
+            id: button_5
+            text: '5'
+        Button:
+            id: button_6
+            text: '6'
+        Button:
+            id: button_minus
+            text: '-'
+        Button:
+            id: button_1
+            text: '1'
+        Button:
+            id: button_2
+            text: '2'
+        Button:
+            id: button_3
+            text: '3'
+        Button:
+            id: button_multi
+            text: '*'
+        Button:
+            id: button_C
+            text: 'C'
+        Button:
+            id: button_0
+            text: '0'
+        Button:
+            id: button_eq
+            text: '='
+        Button:
+            id: button_div
+            text: '/'
