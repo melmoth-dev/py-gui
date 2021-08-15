@@ -53,7 +53,7 @@ class CalcApp(QWidget):
         self._core.calc()
         self._display()
 
-    def clear(self):
+    def _clear(self):
         self._core.clear()
         self._display()
 

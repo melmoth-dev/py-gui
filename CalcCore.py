@@ -1,11 +1,11 @@
 from typing import Final
 
-class CalcCore:
 
+class CalcCore:
 
     OPERATION_CHARS: Final = ('+', '-', '*', '/')
 
-    def __init__(self, term = '0'):
+    def __init__(self, term='0'):
         self._isResult = False
         self._result = '0'
         self.__term = term
@@ -28,28 +28,27 @@ class CalcCore:
         if self._isResult:
             self._isResult = False
 
+    def _getCalculatedTerm(self):
+        if self.term[-1] in self.OPERATION_CHARS:
+            return self.term[:-1]
+        else:
+            return self.term
+
     def addChar(self, char):
         if self._isResult:
             self.term = self._result
             self.addChar(char)
         elif char in self.OPERATION_CHARS:
-            if self.term[-1] in self.OPERATION_CHARS:
-                self.term = "%s%s" % (self.term[:-1], char)
-            else:
-                self.term = "%s%s" % (self.term, char)
+            self.term = "%s%s" % (self._getCalculatedTerm(), char)
         else:
-            if self.term == '0' or self._isResult:
+            if self.term == '0':
                 self.term = char
             else:
                 self.term = "%s%s" % (self.term, char)
 
     def calc(self):
         if not self._isResult:
-            if not self.term[-1] in self.OPERATION_CHARS:
-                calc_text = self.term
-            else:
-                calc_text = self.term[:-1]
-            self._result = str(round(eval(calc_text)))
+            self._result = str(round(eval(self._getCalculatedTerm())))
             self._isResult = True
 
     def clear(self):
