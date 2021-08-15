@@ -2,50 +2,41 @@
 #-*- coding : utf-8 -*-
 
 import sys
+
 from CalcCore import CalcCore
 
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt5.QtGui import QIcon
 from PyQt5 import uic
 
-class CalcApp(QWidget):
+
+class CalcApp(QMainWindow):
 
     def __init__(self):
-        self._initUI()
-        self._initEvents()
+        super(CalcApp, self).__init__()
+        self._init_ui()
+        self._init_events()
         self._core = CalcCore(self._ui.l_display.text())
         self._ui.show()
 
-    def _initUI(self):
+    def _init_ui(self):
         self._ui = uic.loadUi("calc.ui")
+        self._ui.setWindowIcon(QIcon('calculator.png'))
 
-    def _initEvents(self):
-        self._initClickEvent(self._ui.btn_0)
-        self._initClickEvent(self._ui.btn_1)
-        self._initClickEvent(self._ui.btn_2)
-        self._initClickEvent(self._ui.btn_3)
-        self._initClickEvent(self._ui.btn_4)
-        self._initClickEvent(self._ui.btn_5)
-        self._initClickEvent(self._ui.btn_6)
-        self._initClickEvent(self._ui.btn_7)
-        self._initClickEvent(self._ui.btn_8)
-        self._initClickEvent(self._ui.btn_9)
+    def _init_events(self):
+        for widget in vars(self._ui).values():
+            if isinstance(widget, QPushButton):
+                self._init_click_event(widget)
 
-        self._initClickEvent(self._ui.btn_plus)
-        self._initClickEvent(self._ui.btn_minus)
-        self._initClickEvent(self._ui.btn_mult)
-        self._initClickEvent(self._ui.btn_div)
-        self._initClickEvent(self._ui.btn_eq)
-        self._initClickEvent(self._ui.btn_clear)
-
-    def _initClickEvent(self, btn):
+    def _init_click_event(self, btn):
         if btn == self._ui.btn_eq:
             btn.clicked.connect(lambda: self._calc())
         elif btn == self._ui.btn_clear:
             btn.clicked.connect(lambda: self._clear())
         else:
-            btn.clicked.connect(lambda: self._clickChar(btn.text()))
+            btn.clicked.connect(lambda: self._click_char(btn.text()))
 
-    def _clickChar(self, char):
+    def _click_char(self, char):
         self._core.addChar(char)
         self._display()
 
