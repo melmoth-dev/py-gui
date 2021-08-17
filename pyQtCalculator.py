@@ -5,9 +5,9 @@ import sys
 
 from CalcCore import CalcCore
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-from PyQt5.QtGui import QIcon
-from PyQt5 import uic
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtGui import QIcon
+from PyQt6 import uic
 
 
 class CalcApp(QMainWindow):
@@ -55,4 +55,4 @@ class CalcApp(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = CalcApp()
-    app.exec_()
+    app.exec()
