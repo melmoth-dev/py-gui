@@ -34,7 +34,7 @@ class Container(BoxLayout):
 
 class CalcApp(App):
     def build(self):
-        self.icon = 'calculator.png'
+        self.icon = 'images/AppIcon.png'
         return Container()
 
 

@@ -18,8 +18,8 @@ class CalcApp(QMainWindow):
         self._ui.show()
 
     def _init_ui(self):
-        self._ui = QUiLoader().load("calc.ui", None)
-        self._ui.setWindowIcon(QIcon('calculator.png'))
+        self._ui = QUiLoader().load("ui/calc.ui", None)
+        self._ui.setWindowIcon(QIcon('images/AppIcon.png'))
 
     def _init_events(self):
         for widget in vars(self._ui).values():
