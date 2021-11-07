@@ -2,10 +2,12 @@
 #-*- coding : utf-8 -*-
 
 import sys
-from CalcCore import CalcCore
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
-from PySide6.QtGui import QIcon
-from PySide6.QtUiTools import QUiLoader
+
+from Calculator.CalcCore import CalcCore
+
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtGui import QIcon
+from PyQt6 import uic
 
 
 class CalcApp(QMainWindow):
@@ -18,8 +20,8 @@ class CalcApp(QMainWindow):
         self._ui.show()
 
     def _init_ui(self):
-        self._ui = QUiLoader().load("ui/calc.ui", None)
-        self._ui.setWindowIcon(QIcon('images/AppIcon.png'))
+        self._ui = uic.loadUi("../ui/calc.ui")
+        self._ui.setWindowIcon(QIcon('../../images/AppIcon.png'))
 
     def _init_events(self):
         for widget in vars(self._ui).values():

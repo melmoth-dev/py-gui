@@ -4,7 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
 from kivy.core.window import Window
 
-from CalcCore import CalcCore
+from Calculator.CalcCore import CalcCore
 
 Window.size = (300, 372)
 
@@ -34,7 +34,7 @@ class Container(BoxLayout):
 
 class CalcApp(App):
     def build(self):
-        self.icon = 'images/AppIcon.png'
+        self.icon = '../../images/AppIcon.png'
         return Container()
 
 
