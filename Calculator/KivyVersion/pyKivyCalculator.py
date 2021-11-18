@@ -1,3 +1,6 @@
+#!/urs/bin/python3
+# -*- coding : utf-8 -*-
+
 from kivy.app import App
 
 from kivy.uix.boxlayout import BoxLayout
@@ -10,6 +13,8 @@ Window.size = (300, 372)
 
 
 class Container(BoxLayout):
+    """Класс контейнера GUI калькулятора с помощью Kivy"""
+
     calc_text = StringProperty(defaultvalue='0')
 
     def __init__(self):
@@ -25,7 +30,7 @@ class Container(BoxLayout):
             elif instance.text == 'C':
                 self._core.clear()
             else:
-                self._core.addChar(instance.text)
+                self._core.add_char(instance.text)
             self._display()
 
     def _display(self):
@@ -33,6 +38,8 @@ class Container(BoxLayout):
 
 
 class CalcApp(App):
+    """Класс реализации GUI калькулятора с помощью Kivy"""
+
     def build(self):
         self.icon = '../../images/AppIcon.png'
         return Container()

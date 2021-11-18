@@ -1,5 +1,5 @@
 #!/urs/bin/python3
-#-*- coding : utf-8 -*-
+# -*- coding : utf-8 -*-
 
 import sys
 
@@ -11,6 +11,7 @@ from PyQt6 import uic
 
 
 class CalcApp(QMainWindow):
+    """Класс реализации GUI калькулятора с помощью PyQt"""
 
     def __init__(self):
         super(CalcApp, self).__init__()
@@ -37,7 +38,7 @@ class CalcApp(QMainWindow):
             btn.clicked.connect(lambda: self._click_char(btn.text()))
 
     def _click_char(self, char):
-        self._core.addChar(char)
+        self._core.add_char(char)
         self._display()
 
     def _calc(self):

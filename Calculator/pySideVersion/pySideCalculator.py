@@ -1,5 +1,5 @@
 #!/urs/bin/python3
-#-*- coding : utf-8 -*-
+# -*- coding : utf-8 -*-
 
 import sys
 
@@ -11,6 +11,7 @@ from PySide6.QtUiTools import QUiLoader
 
 
 class CalcApp(QMainWindow):
+    """Класс реализации GUI калькулятора с помощью PySide."""
 
     def __init__(self):
         super(CalcApp, self).__init__()
@@ -20,8 +21,8 @@ class CalcApp(QMainWindow):
         self._ui.show()
 
     def _init_ui(self):
-        self._ui = QUiLoader().load("./Calculator/ui/calc.ui")
-        self._ui.setWindowIcon(QIcon('./images/AppIcon.png'))
+        self._ui = QUiLoader().load("../ui/calc.ui")
+        self._ui.setWindowIcon(QIcon('../../images/AppIcon.png'))
 
     def _init_events(self):
         for widget in vars(self._ui).values():
@@ -37,7 +38,7 @@ class CalcApp(QMainWindow):
             btn.clicked.connect(lambda: self._click_char(btn.text()))
 
     def _click_char(self, char):
-        self._core.addChar(char)
+        self._core.add_char(char)
         self._display()
 
     def _calc(self):
