@@ -1,6 +1,3 @@
-#!/urs/bin/python3
-# -*- coding : utf-8 -*-
-
 from kivy.app import App
 
 from kivy.uix.boxlayout import BoxLayout
@@ -45,5 +42,4 @@ class CalcApp(App):
         return Container()
 
 
-if __name__ == '__main__':
-    CalcApp().run()
+

@@ -1,6 +1,3 @@
-#!/urs/bin/python3
-# -*- coding : utf-8 -*-
-
 import sys
 
 from Calculator.CalcCore import CalcCore
@@ -10,11 +7,11 @@ from PySide6.QtGui import QIcon
 from PySide6.QtUiTools import QUiLoader
 
 
-class CalcApp(QMainWindow):
+class PySideApp(QMainWindow):
     """Класс реализации GUI калькулятора с помощью PySide."""
 
     def __init__(self):
-        super(CalcApp, self).__init__()
+        super(PySideApp, self).__init__()
         self._init_ui()
         self._init_events()
         self._core = CalcCore(self._ui.l_display.text())
@@ -53,7 +50,10 @@ class CalcApp(QMainWindow):
         self._ui.l_display.setText(self._core.text)
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = CalcApp()
-    app.exec()
+class CalcApp:
+    """Класс запуска GUI калькулятора, реализованного с помощью PySide."""
+    def run(self):
+        """Запустить калькулятор."""
+        app = QApplication(sys.argv)
+        ex = PySideApp()
+        app.exec()

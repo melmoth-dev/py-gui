@@ -6,6 +6,8 @@ class CalcCore:
 
     OPERATION_CHARS: Final = ('+', '-', '*', '/')
     """Список допустимых символов операций."""
+    PERMISSIBLE_CHARS: Final = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+    """Список остальных допустимых символов."""
 
     def __init__(self, term='0'):
         self._isResult = False
@@ -44,11 +46,13 @@ class CalcCore:
             self.add_char(char)
         elif char in self.OPERATION_CHARS:
             self.term = "%s%s" % (self._get_calculated_term(), char)
-        else:
+        elif char in self.PERMISSIBLE_CHARS:
             if self.term == '0':
                 self.term = char
             else:
                 self.term = "%s%s" % (self.term, char)
+        else:
+            raise ValueError("Недопустимый символ '{}'".format(char))
 
     def calc(self):
         """Выполнение расчёт вычисляемой строки."""
